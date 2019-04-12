@@ -6,6 +6,7 @@
 package imanes.Ventanas;
 
 import Clases.Database;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -133,6 +134,11 @@ public class VentanaInterna extends javax.swing.JInternalFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 430, -1));
 
+        nombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombreActionPerformed(evt);
+            }
+        });
         nombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 nombreKeyTyped(evt);
@@ -155,7 +161,7 @@ public class VentanaInterna extends javax.swing.JInternalFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 640, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 640, -1, -1));
 
         selector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SI", "NO" }));
         selector.setBorder(null);
@@ -314,10 +320,26 @@ public class VentanaInterna extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_selector4ActionPerformed
 
     private void nombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombreKeyTyped
-    char c= evt.getKeyChar();
-    
-        if ((c< 'a' ||  c>'z') && (c< 'A' ||  c>'Z')) evt.consume();
-        
+ 
+
+char car = evt.getKeyChar();      
+if((car<'a' || car>'z') && (car<'A' || car>'Z')           
+    && car !='á' //Minúsculas           
+    && car !='é'          
+    && car !='í'          
+    && car !='ó'         
+    && car !='ú' 
+    && car !='Á' //Mayúsculas           
+    && car !='É'          
+    && car !='Í'          
+    && car !='Ó'
+    && car !='Ú'
+    && car !='ñ'
+    && car !='Ñ'   
+    && (car!=(char)KeyEvent.VK_SPACE))
+{    
+  evt.consume(); 
+} 
     }//GEN-LAST:event_nombreKeyTyped
 
     private void telefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_telefonoKeyTyped
@@ -327,6 +349,10 @@ public class VentanaInterna extends javax.swing.JInternalFrame {
     
         if (c< '0' ||  c>'9' ) evt.consume();
     }//GEN-LAST:event_telefonoKeyTyped
+
+    private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombreActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
